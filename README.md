@@ -1,11 +1,11 @@
-# AURA-QA: A Benchmark for Abstract Query Answering over Documents
+# ASTRA-QA: A Benchmark for Abstract Query Answering over Documents
 
-This is the repository that contains source code for the [AURA-QA website](https://xinyangsally.github.io/adc-benchmark).
+This is the repository that contains source code for the [ASTRA-QA website](https://xinyangsally.github.io/adc-benchmark).
 
-If you use AURA-QA in your project, please kindly cite:
+If you use ASTRA-QA in your project, please kindly cite:
 ```
-@article{aura_qa_2026,
-  title   = {AURA-QA: A Benchmark for Abstract Query Answering over Documents},
+@article{astra_qa_2026,
+  title   = {ASTRA-QA: A Benchmark for Abstract Question Answering over Documents},
   author  = {TBD},
   journal = {arXiv},
   year    = {2026}

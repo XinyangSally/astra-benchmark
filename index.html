@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AURA-QA</title>
+  <title>ASTRA-QA</title>
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -34,7 +34,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">AURA-QA: A Benchmark for Abstract Query Answering over Documents</h1>
+          <h1 class="title is-1 publication-title">ASTRA-QA: A Benchmark for Abstract Query Answering over Documents</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="mailto:shuwang3@link.cuhk.edu.cn">Shu Wang</a>,</span>
@@ -77,7 +77,7 @@
               </span>
               <!-- Data Link. -->
               <span class="link-block">
-                <a href="https://huggingface.co/datasets/sam234990/AURA-QA"
+                <a href="https://huggingface.co/datasets/sam234990/ASTRA-QA"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-database"></i>
@@ -105,20 +105,20 @@
             synthesize information scattered across long or multiple documents into coherent answers.
             However, this setting is still poorly supported by existing benchmarks and evaluation protocols,
             which often lack stable abstract references or rely on coarse similarity metrics and unstable
-            head-to-head comparison. To alleviate this issue, we introduce <strong>AURA-QA</strong>,
+            head-to-head comparison. To alleviate this issue, we introduce <strong>ASTRA-QA</strong>,
             short for <strong>A</strong>bstract q<strong>U</strong>ery answering with <strong>R</strong>eference-based 
             <strong>A</strong>ssessment,
             a benchmark for abstract query answering over documents.
           </p>
           <p>
-            AURA-QA contains 869 QA pairs over academic papers and news documents, covering five abstract 
+            ASTRA-QA contains 869 QA pairs over academic papers and news documents, covering five abstract 
             task types and three controlled retrieval scopes. Each instance is paired with structured reference 
             targets, including reference topic sets, hallucination-related topics, and aligned evidence. 
-            Building on these references, AURA-QA assesses whether answers cover required key points and 
+            Building on these references, ASTRA-QA assesses whether answers cover required key points and 
             avoid unsupported content by directly scoring topic coverage and hallucinated content,
             enabling scalable evaluation without exhaustive head-to-head comparisons.
             Experiments with representative Retrieval-Augmented Generation (RAG) methods spanning vanilla, 
-            graph-based, and hierarchical retrieval settings show that AURA-QA provides reference-grounded 
+            graph-based, and hierarchical retrieval settings show that ASTRA-QA provides reference-grounded 
             diagnostics for coverage, hallucination, and retrieval-scope robustness.
           </p>
         </div>
@@ -134,7 +134,7 @@
 
     <!-- 大标题 -->
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-2">AURA-QA Benchmark</h2>
+      <h2 class="title is-2">ASTRA-QA Benchmark</h2>
     </div>
 
     <!-- ───────────── Overview ───────────── -->
@@ -145,21 +145,21 @@
         <div class="content has-text-justified">
           <img class="columns is-centered has-text-centered"
               src="./static/images/alpha.png"
-              alt="AURA-QA Framework" width="95%" style="margin:0 auto">
+              alt="ASTRA-QA Framework" width="95%" style="margin:0 auto">
 
           <p>
-            AURA-QA is a benchmark for abstract query answering over documents, with a focus on evaluating RAG methods.
+            ASTRA-QA is a benchmark for abstract query answering over documents, with a focus on evaluating RAG methods.
             Unlike conventional QA benchmarks that emphasize short answers or extractive evidence lookup,
-            AURA-QA is designed to evaluate whether a RAG system can synthesize information from long documents
+            ASTRA-QA is designed to evaluate whether a RAG system can synthesize information from long documents
             and produce responses that are coherent, selective, and faithful to the source content.
             Such questions commonly require document-level summaries, structured comparisons, thematic organization,
             and temporally grounded synthesis rather than isolated factual snippets.
-            AURA-QA is built over two source domains, namely academic papers and news documents,
+            ASTRA-QA is built over two source domains, namely academic papers and news documents,
             and covers five abstract task types.
           </p>
 
           <p>
-            Formally, AURA-QA consists of a document corpus \(D\) and a set of QA pairs.
+            Formally, ASTRA-QA consists of a document corpus \(D\) and a set of QA pairs.
             Each QA pair is represented as \((q, T, H, m)\), where \(q\) is an abstract question,
             \(T = \{\tau_1, \tau_2, \cdots, \tau_n\}\) is the reference topic set,
             \(H = \{h_1, h_2, \cdots, h_k\}\) is the hallucination set, and \(m\) denotes the associated metadata,
@@ -184,9 +184,9 @@
         <div class="content has-text-justified">
           <img class="columns is-centered has-text-centered"
               src="./static/images/workflow.png"
-              alt="AURA-QA Construction Pipeline" width="95%" style="margin:0 auto">
+              alt="ASTRA-QA Construction Pipeline" width="95%" style="margin:0 auto">
           <p>
-            AURA-QA is constructed through a three-stage construction pipeline, as illustrated in above figure.
+            ASTRA-QA is constructed through a three-stage construction pipeline, as illustrated in above figure.
             The pipeline converts heterogeneous source materials into abstract QA pairs grounded in curated document collections,
             with reference-backed evidence and comprehensive topic-set answers.
           </p>
@@ -204,7 +204,7 @@
             <li>
               <b>Step 2: QA Pairs Generation.</b>
               We use the processed materials, along with <em>task-specific guidance</em>, to
-              generate initial QA pairs with an LLM. We use GPT-4o throughout the AURA-QA construction
+              generate initial QA pairs with an LLM. We use GPT-4o throughout the ASTRA-QA construction
               pipeline for generation and refinement.
             </li>
 
@@ -304,9 +304,9 @@
         <div class="content has-text-justified">
 
           <p>
-            Our core idea is to evaluate AURA-QA answers in the same spirit as grading a
+            Our core idea is to evaluate ASTRA-QA answers in the same spirit as grading a
             composition or a reading-comprehension response by checking whether the answer
-            covers the required key points. For AURA-QA, a good answer should cover the
+            covers the required key points. For ASTRA-QA, a good answer should cover the
             reference topics in \(T\) as completely as possible and avoid hallucinated
             content.
           </p>
@@ -356,7 +356,7 @@
       <div class="column is-full-width">
         <div class="content has-text-justified">
           <p>
-            Performance comparison of representative RAG methods on AURA-QA under the three retrieval
+            Performance comparison of representative RAG methods on ASTRA-QA under the three retrieval
             settings and overall. TF1, HT, and HR denote
             \(\text{T-F1}\), \(H_{\mathrm{topic}}\), and \(H_{\mathrm{resp}}\), respectively.
           </p>
@@ -475,8 +475,8 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{aura_qa_2026,
-  title   = {AURA-QA: A Benchmark for Abstract Query Answering over Documents},
+    <pre><code>@article{astra_qa_2026,
+  title   = {ASTRA-QA: A Benchmark for Abstract Question Answering over Documents},
   author  = {TBD},
   journal = {arXiv},
   year    = {2026}
