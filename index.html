@@ -57,7 +57,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://arxiv.org/abs/2605.10168"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -101,24 +101,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Document-level question answering (QA) increasingly includes abstract queries, where systems
-            synthesize information scattered across long or multiple documents into coherent answers.
-            However, this setting is still poorly supported by existing benchmarks and evaluation protocols,
-            which often lack stable abstract references or rely on coarse similarity metrics and unstable
-            head-to-head comparison. To alleviate this issue, we introduce <strong>ASTRA-QA</strong>,
-            a benchmark for <strong>A</strong>b<strong>STRA</strong>ct </strong>Q</strong>uestion 
-            <strong>A</strong>nswering over documents.
+            %
+            Document-based question answering (QA) increasingly includes abstract questions that require 
+            synthesizing scattered information from long documents or across multiple documents into coherent answers.
+            However, this setting is still poorly supported by existing benchmarks and evaluation methods, which often 
+            lack stable abstract references or rely on coarse similarity metrics and unstable head-to-head comparisons.
+            To alleviate this issue, we introduce <strong>ASTRA-QA</strong>, a benchmark for <strong>A<strong>b
+            <strong>STRA</strong>eruct <strong>Q</strong>uestion <strong>A</strong>nswering over documents.
           </p>
           <p>
-            ASTRA-QA contains 869 QA pairs over academic papers and news documents, covering five abstract 
-            task types and three controlled retrieval scopes. Each instance is paired with structured reference 
-            targets, including reference topic sets, hallucination-related topics, and aligned evidence. 
-            Building on these references, ASTRA-QA assesses whether answers cover required key points and 
-            avoid unsupported content by directly scoring topic coverage and hallucinated content,
-            enabling scalable evaluation without exhaustive head-to-head comparisons.
-            Experiments with representative Retrieval-Augmented Generation (RAG) methods spanning vanilla, 
-            graph-based, and hierarchical retrieval settings show that ASTRA-QA provides reference-grounded 
-            diagnostics for coverage, hallucination, and retrieval-scope robustness.
+            ASTRA-QA contains 869 QA instances over academic papers and news documents, covering five abstract question 
+            types and three controlled retrieval scopes. Each instance is equipped with explicit evaluation annotations, 
+            including answer topic sets, curated unsupported topics, and aligned evidence. Building on these annotations, 
+            ASTRA-QA assesses whether answers cover required key points and avoid unsupported content by directly scoring 
+            topic coverage and curated unsupported content, enabling scalable evaluation without exhaustive head-to-head 
+            comparisons. Experiments with representative Retrieval-Augmented Generation (RAG) methods spanning vanilla, 
+            graph-based, and hierarchical retrieval settings show that ASTRA-QA provides reference-grounded diagnostics 
+            for coverage, hallucination, and retrieval-scope robustness.
           </p>
         </div>
       </div>
@@ -147,31 +146,29 @@
               alt="ASTRA-QA Framework" width="95%" style="margin:0 auto">
 
           <p>
-            ASTRA-QA is a benchmark for abstract query answering over documents, with a focus on evaluating RAG methods.
-            Unlike conventional QA benchmarks that emphasize short answers or extractive evidence lookup,
-            ASTRA-QA is designed to evaluate whether a RAG system can synthesize information from long documents
-            and produce responses that are coherent, selective, and faithful to the source content.
-            Such questions commonly require document-level summaries, structured comparisons, thematic organization,
-            and temporally grounded synthesis rather than isolated factual snippets.
-            ASTRA-QA is built over two source domains, namely academic papers and news documents,
-            and covers five abstract task types.
+            ASTRA-QA  is a benchmark for abstract QA over documents, with a focus on evaluating RAG methods.
+            Unlike conventional QA benchmarks that emphasize short answers or extractive evidence lookup, ASTRA-QA 
+            is designed to evaluate whether a RAG system can synthesize information from long documents and produce 
+            responses that are coherent, selective, and faithful to the source content. Such questions commonly require 
+            document-level summaries, structured comparisons, thematic organization, and temporally grounded synthesis 
+            rather than isolated factual snippets. ASTRA-QA  is built over two source domains, namely academic papers 
+            and news documents, and covers five abstract question types.
           </p>
 
           <p>
-            Formally, ASTRA-QA consists of a document corpus \(D\) and a set of QA pairs.
-            Each QA pair is represented as \((q, T, H, m)\), where \(q\) is an abstract question,
-            \(T = \{\tau_1, \tau_2, \cdots, \tau_n\}\) is the reference topic set,
-            \(H = \{h_1, h_2, \cdots, h_k\}\) is the hallucination set, and \(m\) denotes the associated metadata,
-            including the aligned evidence set \(E\), the task type, and the retrieval scope.
-            Figure 1 provides an example of this representation, showing the question, reference topic set,
-            hallucination set, and metadata of a QA pair.
-            The set \(T\) is constructed from high-level summary signals and used by our reference-based evaluation
-            method to assess answer coverage, while \(H\) records relevant but incorrect topics and is used to
-            assess hallucinated content.
+            Formally, ASTRA-QA consists of a document corpus \(D\) and a set of QA instances.
+            Each QA instance is represented as \((Q, A, H, M)\), where \(Q\) is an abstract question,
+            \(A = \{\tau_1, \tau_2, \cdots, \tau_n\}\) is the answer topic set,
+            \(H = \{h_1, h_2, \cdots, h_k\}\) is a curated hallucination set containing plausible but
+            unsupported topics, and \(M\) denotes the associated metadata, including the aligned evidence
+            set \(E\), the question type, and the retrieval scope.
+            Figure 1 provides an example of this representation, showing the question, answer topic set,
+            hallucination set, and metadata of a QA instance.
+            The set \(A\) is constructed from high-level summary signals and used by our topic-based
+            evaluation method to assess answer coverage, while \(H\) records relevant but unsupported
+            topics and is used to assess whether responses include these curated hallucination targets.
           </p>
         </div>
-        
-
       </div>
     </div>
 
@@ -185,26 +182,25 @@
               src="./static/images/workflow.png"
               alt="ASTRA-QA Construction Pipeline" width="95%" style="margin:0 auto">
           <p>
-            ASTRA-QA is constructed through a three-stage construction pipeline, as illustrated in above figure.
-            The pipeline converts heterogeneous source materials into abstract QA pairs grounded in curated document collections,
-            with reference-backed evidence and comprehensive topic-set answers.
+            ASTRA-QA is constructed through a three-stage construction pipeline. The pipeline converts heterogeneous 
+            source materials into abstract QA instances grounded in curated document collections, with reference-grounded 
+            evidence and comprehensive topic-set answers.
           </p>
 
           <ul>
             <!-- Step 1 -->
             <li>
               <b>Step 1: Data Collection.</b>
-              Original documents are collected from OpenReview, focusing on ICLR 2023-2025, survey papers from arXiv,
-              the tagged corpus of publications of Epstein et al., and news articles downloaded through the mediastack API,
-              yielding 700+ paper documents and 1,500+ news articles.
+              Original documents are collected from OpenReview, focusing on ICLR 2023, survey papers from arXiv, the tagged 
+              corpus of publications of Epstein et al., and news articles downloaded through the mediastack API, forming an 
+              initial candidate pool of 700+ paper documents and 1,500+ news articles.
             </li>
 
             <!-- Step 2 -->
             <li>
               <b>Step 2: QA Pairs Generation.</b>
-              We use the processed materials, along with <em>task-specific guidance</em>, to
-              generate initial QA pairs with an LLM. We use GPT-4o throughout the ASTRA-QA construction
-              pipeline for generation and refinement.
+              We use the processed materials, along with <em>type-specific guidance</em>, to generate initial QA instances with an LLM.
+              Specifically, we use GPT-4o throughout the ASTRA-QA construction pipeline for generation and refinement.
             </li>
 
             <!-- Step 3 -->
@@ -303,11 +299,11 @@
         <div class="content has-text-justified">
 
           <p>
-            Our core idea is to evaluate ASTRA-QA answers in the same spirit as grading a
-            composition or a reading-comprehension response by checking whether the answer
-            covers the required key points. For ASTRA-QA, a good answer should cover the
-            reference topics in \(T\) as completely as possible and avoid hallucinated
-            content.
+
+            Our core idea is to evaluate ASTRA-QA answers in the same spirit as grading a 
+            composition or a reading-comprehension response by checking whether the answer 
+            covers the required key points. For ASTRA-QA, a good answer should cover the answer 
+            topics in \(A\) as completely as possible and avoid hallucinated content.
           </p>
           <p>
             We then compute topic precision, topic recall, and topic F1 as
@@ -320,8 +316,8 @@
             \text{T-F1} = \frac{2\,\text{T-Prec}\cdot\text{T-Rec}}{\text{T-Prec}+\text{T-Rec}}.
           \]
           <p>
-            Based on \(C_H(q, y)\), we define a topic-level hallucination score and a
-            response-level hallucination rate as
+            Based on \(C_H(q, y)\), we define a topic-level hallucination score (\(H_{\mathrm{topic}}\)) 
+            and a response-level hallucination rate (\(H_{\mathrm{resp}}\)) as
           </p>
           \[
             H_{\mathrm{topic}}(q, y) = \frac{|C_H(q, y)|}{|H|},
