@@ -1,6 +1,6 @@
 # ASTRA-QA: A Benchmark for Abstract Query Answering over Documents
 
-This is the repository that contains source code for the [ASTRA-QA website](https://xinyangsally.github.io/adc-benchmark).
+This is the repository that contains source code for the [ASTRA-QA website](https://xinyangsally.github.io/abstra-benchmark).
 
 If you use ASTRA-QA in your project, please kindly cite:
 ```
